@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions - BiTbyBiT</title>
+  <meta name="description" content="Your code submissions">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="logo">
+          <a href="index.html">
+            <i class="fa-solid fa-code"></i>
+            <span>BiTbyBiT</span>
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="problems.html" class="nav-link">Problems</a>
+          <a href="submissions.html" class="nav-link active">Submissions</a>
+          <a href="discussion.html" class="nav-link">Discussion</a>
+        </div>
+
+        <div class="auth-buttons">
+          <button id="login-btn" class="btn btn-glass">Login</button>
+          <button id="signup-btn" class="btn btn-primary">Sign Up</button>
+        </div>
+
+        <div class="mobile-menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="problems.html" class="mobile-link">Problems</a>
+      <a href="submissions.html" class="mobile-link">Submissions</a>
+      <a href="discussion.html" class="mobile-link">Discussion</a>
+      <button id="mobile-login-btn" class="mobile-link">Login</button>
+      <button id="mobile-signup-btn" class="mobile-link btn-primary-mobile">Sign Up</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Your <span class="gradient-text">Submissions</span></h1>
+      <p>Track your progress and review your submitted solutions</p>
+    </div>
+
+    <!-- Submissions Filter Section -->
+    <div class="filter-section glass-card">
+      <div class="filter-row">
+        <div class="search-box">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" id="submissions-search" placeholder="Search by problem title...">
+        </div>
+        
+        <div class="filter-group">
+          <div class="filter-box">
+            <i class="fa-solid fa-check-circle"></i>
+            <select id="submissions-status">
+              <option value="All">All Status</option>
+              <option value="Accepted">Accepted</option>
+              <option value="Wrong Answer">Wrong Answer</option>
+              <option value="Time Limit Exceeded">Time Limit Exceeded</option>
+              <option value="Runtime Error">Runtime Error</option>
+            </select>
+          </div>
+          
+          <div class="filter-box">
+            <i class="fa-solid fa-code"></i>
+            <select id="submissions-language">
+              <option value="All">All Languages</option>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submissions List -->
+    <div class="submissions-section glass-card">
+      <div class="table-container">
+        <table class="submissions-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Problem</th>
+              <th>Status</th>
+              <th>Runtime</th>
+              <th>Memory</th>
+              <th>Language</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="submissions-tbody">
+            <!-- Table rows will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- No Submissions Message -->
+      <div id="no-submissions" class="no-data-message">
+        <i class="fa-solid fa-code"></i>
+        <h3>No submissions yet</h3>
+        <p>Start solving problems to see your submissions here</p>
+        <a href="problems.html" class="btn btn-primary">Explore Problems</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>Made with <i class="fa-solid fa-heart pulse"></i> by Aditya Nair and Sharad Mayank</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="auth-modal glass-card">
+      <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Login</button>
+        <button class="auth-tab" data-tab="signup">Sign Up</button>
+      </div>
+      
+      <!-- Login Form -->
+      <div class="auth-form login-form active">
+        <form id="login-form">
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <input type="email" placeholder="Email" required>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" placeholder="Password" required>
+          </div>
+          
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember-me">
+              <label for="remember-me">Remember me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-full">Login</button>
+        </form>
+      </div>
+      
+      <!-- Sign Up Form -->
+      <div class="auth-form signup-form">
+        <form id="signup-form">
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <input type="text" placeholder="Username" required>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <input type="email" placeholder="Email" required>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" placeholder="Password" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submission Detail Modal -->
+  <div class="modal-overlay" id="submission-detail-modal">
+    <div class="submission-detail-modal glass-card">
+      <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="submission-detail-header">
+        <h3 id="submission-problem-title">Two Sum</h3>
+        <div class="submission-meta">
+          <span id="submission-status" class="status accepted">Accepted</span>
+          <span class="separator">•</span>
+          <span id="submission-date">May 4, 2023</span>
+        </div>
+      </div>
+      
+      <div class="submission-detail-content">
+        <div class="submission-stats">
+          <div class="stat-item">
+            <div class="stat-label">Runtime</div>
+            <div class="stat-value" id="submission-runtime">56 ms</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Memory</div>
+            <div class="stat-value" id="submission-memory">14.2 MB</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Language</div>
+            <div class="stat-value" id="submission-language">Python</div>
+          </div>
+        </div>
+        
+        <div class="submission-code">
+          <div class="code-header">
+            <h4>Your Submission</h4>
+            <button class="btn btn-glass btn-sm">
+              <i class="fa-regular fa-copy"></i>
+              Copy
+            </button>
+          </div>
+          <pre id="submission-code-display" class="code-display">def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='submissions.js') }}"></script>
+</body>
+</html>
