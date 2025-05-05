@@ -37,15 +37,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> Add images in your repo and embed like this:
-
-![Homepage](screenshots/homepage.png)
-![AI Approach](screenshots/ai_approach.png)
-
----
-
 ## 🛠️ Installation & Setup
 
 ### 🔧 Prerequisites
