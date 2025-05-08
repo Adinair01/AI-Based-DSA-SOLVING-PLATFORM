@@ -1,7 +1,5 @@
 # 🚀 BitByBit - AI Powered DSA Solving Platform
 
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Status](https://img.shields.io/badge/status-Active-blue)
 ![Tech](https://img.shields.io/badge/Tech%20Stack-HTML%2C%20CSS%2C%20JS%2C%20Flask%2C%20MySQL-orange)
 
 > An AI-powered full-stack platform to supercharge your DSA prep journey 🚀💻
